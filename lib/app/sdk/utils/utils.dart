@@ -1,3 +1,3 @@
-enum Status { intial, success, fail }
+enum Status { intial, loading, success, fail }
 
 enum Splash { intial, home, login }

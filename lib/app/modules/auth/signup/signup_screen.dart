@@ -2,7 +2,6 @@ import 'package:auth_app/app/modules/auth/signup/signup.dart';
 import 'package:auth_app/app/sdk/extension/extension.dart';
 import 'package:auth_app/app/sdk/widget/custom_fill_button.dart';
 import 'package:auth_app/app/sdk/widget/custom_reactive_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

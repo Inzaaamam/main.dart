@@ -79,7 +79,7 @@ class LoginScreen extends StatelessWidget {
                                 'email': form.control('email').value as String,
                                 'password': form.control('password').value as String
                               };
-                              context.read<LoginCubit>().login(data);
+                              context.read<LoginCubit>().userLogin(data);
                             } else {
                               form.markAllAsTouched();
                             }

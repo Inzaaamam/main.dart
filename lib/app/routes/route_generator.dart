@@ -1,10 +1,10 @@
 import 'package:auth_app/app/modules/splash/splash.dart';
-import 'package:auth_app/app/modules/splash/splash_state.dart';
 import 'package:flutter/material.dart';
 
 import '../modules/auth/login/login_screen.dart';
 import '../modules/auth/signup/signup_screen.dart';
-import '../modules/dashboard/home_screen.dart';
+import '../modules/dashboard/dashboard/home_screen.dart';
+import '../modules/dashboard/food_recipe/food_recipe_screen.dart';
 import 'constant.dart';
 
 class RouteGenerator {
@@ -19,6 +19,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => const LoginScreen());
       case Routes.signup:
         return MaterialPageRoute(builder: (context) => const SignUpScreen());
+      case Routes.food_recipe:
+        return MaterialPageRoute(builder: (context) => const FoodRecipeScreen());
       default:
         return _errorRoute();
     }

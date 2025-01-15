@@ -12,15 +12,15 @@ class Base {
     connectTimeout: const Duration(seconds: connectTimeOut),
     receiveTimeout: const Duration(seconds: receivedTimeOut),
     sendTimeout: const Duration(seconds: senderTimeOut),
-  ))
-    ..interceptors.addAll([
-      InterceptorsWrapper(onRequest: (options, handler) {
-        handler.next(options);
-      }, onResponse: (options, handler) {
-        handler.next(options);
-      }, onError: (options, error) {
-        return error.next(options);
-      }),
-      LogInterceptor()
-    ]);
+  ));
+  // ..interceptors.addAll([
+  //   InterceptorsWrapper(onRequest: (options, handler) {
+  //     handler.next(options);
+  //   }, onResponse: (options, handler) {
+  //     handler.next(options);
+  //   }, onError: (options, error) {
+  //     return error.next(options);
+  //   }),
+  //   LogInterceptor()
+  // ]);
 }
