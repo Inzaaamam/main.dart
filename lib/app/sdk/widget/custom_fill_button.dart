@@ -45,3 +45,38 @@ class CustomFillButton extends StatelessWidget {
     );
   }
 }
+
+class CustomIconButton extends StatelessWidget {
+  const CustomIconButton(
+      {super.key, required this.text, required this.onTap, required this.icon});
+  final String text;
+  final VoidCallback onTap;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 50,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5), color: CustomColor.primary),
+        child: GestureDetector(
+          onTap: onTap,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, size: 24, color: CustomColor.white,),
+              const SizedBox(
+                width: 30,
+              ),
+              Text(
+                text,
+                style: const TextStyle(color: CustomColor.white, fontSize: Sizes.s20),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

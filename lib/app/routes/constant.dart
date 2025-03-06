@@ -5,4 +5,5 @@ class Routes {
   static const signup = 'signup';
 //    food recipe screen
   static const food_recipe = 'food_recipe_screen';
+  static const details_recipe = 'details_recipe';
 }

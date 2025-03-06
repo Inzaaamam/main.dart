@@ -23,26 +23,27 @@ class LoginCubit extends Cubit<LoginState> {
     // share = await SharedPreferences.getInstance();
   }
 
-  Future<Map<String, dynamic>?> login(Map<String, dynamic> data) async {
-    emit(state.copyWith(isLoading: true, status: Status.intial));
-    try {
-      final response = await SignInApi().signIn(data);
-      final user = UserModel.fromJson(response);
-      share.setString('user', jsonEncode(response));
-      // userCubit.updateUser(user);
-      emit(state.copyWith(
-        isLoading: false,
-        status: Status.success,
-      ));
-    } catch (e) {
-      emit(state.copyWith(
-        isLoading: false,
-        status: Status.fail,
-      ));
-      Exception(e.toString());
-    }
-    return null;
-  }
+  //  login with shared preference
+  // Future<Map<String, dynamic>?> login(Map<String, dynamic> data) async {
+  //   emit(state.copyWith(isLoading: true, status: Status.intial));
+  //   try {
+  //     final response = await SignInApi().signIn(data);
+  //     final user = UserModel.fromJson(response);
+  //     share.setString('user', jsonEncode(response));
+  //     // userCubit.updateUser(user);
+  //     emit(state.copyWith(
+  //       isLoading: false,
+  //       status: Status.success,
+  //     ));
+  //   } catch (e) {
+  //     emit(state.copyWith(
+  //       isLoading: false,
+  //       status: Status.fail,
+  //     ));
+  //     Exception(e.toString());
+  //   }
+  //   return null;
+  // }
 
   //  Implement with Local Database
   Future<Map<String, dynamic>?> userLogin(Map<String, dynamic> data) async {

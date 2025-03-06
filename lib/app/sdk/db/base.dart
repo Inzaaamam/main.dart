@@ -1,33 +1,24 @@
 // import 'package:sqflite/sqflite.dart';
-// import 'app_database.dart';
+// import 'package:path/path.dart';
 //
-// class DBase {
-//   final String tableName;
-//   final ConflictAlgorithm conflictAlgorithm;
+// class DB {
+//   static final DB _db = DB._internal();
+//   DB._internal();
+//   late Database _database;
+//   static const dbName = 'User';
+//   static DB get get => _db;
+//   bool intialized = false;
 //
-//   DBase({
-//     required this.tableName,
-//     this.conflictAlgorithm = ConflictAlgorithm.ignore,
-//   });
-//
-//   Future<int> insert(Map<String, dynamic> data) async {
-//     final db = await AppDatabase.instance.database;
-//     return db.insert(tableName, data, conflictAlgorithm: conflictAlgorithm);
+//   Future<Database> getDB() async {
+//     if (!intialized) await openDB;
+//     return _database;
 //   }
 //
-//   Future<void> insertList(List<Map<String, dynamic>> dataList) async {
-//     if (dataList.isEmpty) return;
-//
-//     final db = await AppDatabase.instance.database;
-//     final batch = db.batch();
-//     for (final item in dataList) {
-//       batch.insert(tableName, item, conflictAlgorithm: conflictAlgorithm);
-//     }
-//     await batch.commit(noResult: true);
-//   }
-//
-//   Future<List<Map<String, dynamic>>> rawQuery(String sql) async {
-//     final db = await AppDatabase.instance.database;
-//     return db.rawQuery(sql);
+//   Future<void> openDB() async {
+//     final databasePath = await getDatabasesPath();
+//     final path = join(databasePath, dbName);
+//     _database = await openDatabase(path,
+//         version: 1, onCreate: (Database db, int version) async {});
+//     intialized = true;
 //   }
 // }

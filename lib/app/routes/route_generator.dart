@@ -1,4 +1,6 @@
+import 'package:auth_app/app/modules/dashboard/food_recipe/details_recipe.dart';
 import 'package:auth_app/app/modules/splash/splash.dart';
+import 'package:auth_app/app/sdk/models/food_recipe.dart';
 import 'package:flutter/material.dart';
 
 import '../modules/auth/login/login_screen.dart';
@@ -9,7 +11,7 @@ import 'constant.dart';
 
 class RouteGenerator {
   static Route<dynamic> generatorRoute(RouteSettings settings) {
-    final arg = settings.name;
+    final args = settings.arguments;
     switch (settings.name) {
       case Routes.splash:
         return MaterialPageRoute(builder: (context) => const SplashScreen());
@@ -21,6 +23,12 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => const SignUpScreen());
       case Routes.food_recipe:
         return MaterialPageRoute(builder: (context) => const FoodRecipeScreen());
+      case Routes.details_recipe:
+        return MaterialPageRoute(builder: (_) => DetailsRecipe(recipes: args as Recipes));
+      // if (args is Recipes) {
+      //   return MaterialPageRoute(builder: (_) => DetailsRecipe(recipes: args));
+      // }
+      // return _errorRoute();
       default:
         return _errorRoute();
     }

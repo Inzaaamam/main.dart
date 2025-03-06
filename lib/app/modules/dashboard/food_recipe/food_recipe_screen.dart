@@ -1,12 +1,12 @@
 import 'package:auth_app/app/modules/dashboard/food_recipe/food_recipe_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../routes/constant.dart';
 import '../../../sdk/utils/utils.dart';
 import 'food_recipe_cubit.dart';
 
 class FoodRecipeScreen extends StatelessWidget {
   const FoodRecipeScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -14,6 +14,7 @@ class FoodRecipeScreen extends StatelessWidget {
       child: Builder(builder: (context) {
         return Scaffold(
           appBar: AppBar(
+            iconTheme: const IconThemeData(color: Colors.white),
             automaticallyImplyLeading: true,
             title: const Text('Food Recipe Data'),
           ),
@@ -33,29 +34,39 @@ class FoodRecipeScreen extends StatelessWidget {
                     final item = recipe?[index];
                     return Padding(
                       padding: const EdgeInsets.all(12),
-                      child: Card(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context)
+                              .pushNamed(Routes.details_recipe, arguments: item);
+                        },
+                        child: Card(
+                            child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
                           child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                              child: Image.network(
-                            item?.image ?? '',
-                            fit: BoxFit.cover,
-                          )),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(item?.name ?? ''),
+                              if (item?.image != null)
+                                SizedBox(
+                                    child: Image.asset(
+                                  item?.image ?? '',
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, child) {
+                                    return Image.asset('lib/app/assets/food.jpg');
+                                  },
+                                )),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(item?.name ?? ''),
+                                ],
+                              ),
                             ],
                           ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                        ],
-                      )),
+                        )),
+                      ),
                     );
                   },
                 );

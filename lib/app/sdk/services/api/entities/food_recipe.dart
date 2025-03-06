@@ -4,15 +4,16 @@ import '../../../models/food_recipe.dart';
 
 class FoodRecipe {
   static const connectionTime = 2400;
-  static const receviedTime = 2400;
+  static const receivedTime = 2400;
   static const senderTime = 2400;
   static const baseurl = 'https://dummyjson.com/recipes';
   static final dio = Dio(BaseOptions(
     baseUrl: baseurl,
     connectTimeout: const Duration(seconds: connectionTime),
-    receiveTimeout: const Duration(seconds: receviedTime),
-    sendTimeout: const Duration(seconds: receviedTime),
+    receiveTimeout: const Duration(seconds: receivedTime),
+    sendTimeout: const Duration(seconds: senderTime),
   ));
+
   Future<List<Recipes>?> getRecipe() async {
     try {
       final response = await dio.get(baseurl);
@@ -25,5 +26,6 @@ class FoodRecipe {
     } catch (e) {
       rethrow;
     }
+    return null;
   }
 }
